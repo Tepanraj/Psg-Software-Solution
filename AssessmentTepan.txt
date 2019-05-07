@@ -1,0 +1,84 @@
+import java.util.*;
+class Customer
+{
+    String name;
+    boolean membership;
+    int discount=0,pdiscounts=0;
+    String membertype;
+public Customer(String n,boolean t,String m)
+{
+    name=n;
+    membership=t;
+    membertype=m;
+}
+
+}
+class Trends  extends Customer
+{
+    
+    public Trends (int x,int y,String n,boolean t, String m)
+    {
+        super(n,t,m);
+        
+        if(t)
+        {
+             
+            if(super.membertype=="Premium")
+			{
+                super.discount=20;
+			}
+            else if(super.membertype=="Silver")
+			{
+                super.discount=10;
+			}
+			else if(super.membertype=="Gold")
+            {
+
+                super.discount=15;
+            }
+        System.out.println(x);
+			if(x>0)
+			{
+            super.pdiscounts=10;
+			}
+			else
+			{
+            super.pdiscounts=0;
+			}
+		}
+	} 	  
+    public void bill()
+    {
+    System.out.println("-----------------------Invoice----------------------")   ;
+    System.out.println("Customer Name:"+super.name);
+    System.out.println(" Member??:"+super.membership);
+    System.out.println("Membershiptype:"+super.membertype);
+    System.out.println("Total service Discount:"+super.discount+"%");
+    System.out.println("Total product Discount::"+super.pdiscounts+"%");
+    
+    }
+    
+}
+
+public class Main{
+
+     public static void main(String []args){
+        
+        Scanner in=new Scanner(System.in);
+        System.out.print("Enter Number of Products:");
+        int x=in.nextInt();
+        System.out.println("Enter Number of Services");
+        int y=in.nextInt();
+        System.out.println("Enter Name");
+        String n=in.next();
+        System.out.println("Member Or Not(True/False)");
+        boolean t=in.nextBoolean();
+        System.out.println("Enter Member Type:"+"\n"+"Premium"+"\n"+"Gold"+"\n"+"Silver"+"\n"+"Public");
+        String m=in.next();
+        Trends  obj=new Trends (x,y,n,t,m);
+        obj.bill();
+        
+        
+        
+     }
+}
